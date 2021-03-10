@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      
+        {
+          "type": "node", // debugger type (plugin)
+          "request": "launch", // request type launch or attach
+          "name": "Nest Debug",
+          "runtimeExecutable": "npm", // runtime app to use
+          "runtimeArgs": [ // args to use
+            "run",
+            "start:dev"
+          ],
+          "port": 4000,
+          "console": "integratedTerminal", // kind of console to use
+        }
+    ]
+}
