@@ -6,18 +6,22 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { HeroCreateDto } from './dto/hero-create.dto';
 import { HeroListDto } from './dto/hero-list.dto';
 import { HeroDto } from './dto/hero.dto';
 import { HeroService } from './hero.service';
 
-@Controller('api/heroes')
+@Controller('/api/heroes')
 export class HeroController {
   constructor(private readonly heroService: HeroService) {}
 
   @Get()
-  async findAll(): Promise<HeroListDto> {
+  async findAll(@Query() query: { name: string }): Promise<HeroListDto> {
+    if (query && query.name) {
+      return await this.heroService.getByName(query.name);
+    }
     return await this.heroService.getAllHeroes();
   }
 

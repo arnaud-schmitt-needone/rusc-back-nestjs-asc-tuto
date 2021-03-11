@@ -25,9 +25,18 @@ export class HeroService {
 
     return toPromise(toHeroDto(hero));
   }
+
   // GET
   async getAllHeroes(): Promise<HeroListDto> {
     return toPromise({ heroes: heroes.map((hero) => toHeroDto(hero)) });
+  }
+
+  // GET BY NAME
+  async getByName(name: string): Promise<HeroListDto> {
+    const searchResult = heroes.filter((hero) =>
+      hero.name.toLowerCase().includes(name.toLowerCase()),
+    );
+    return toPromise({ heroes: searchResult.map((hero) => toHeroDto(hero)) });
   }
 
   // POST
