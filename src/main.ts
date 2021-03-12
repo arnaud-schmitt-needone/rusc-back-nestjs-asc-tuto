@@ -4,10 +4,11 @@ import { Logger } from '@nestjs/common';
 import 'dotenv/config';
 
 const port = process.env.PORT;
+const origin = process.env.ORIGIN;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const origin = '*';
+  // const origin = '*';
   app.enableCors({ origin });
   await app.listen(port);
 
